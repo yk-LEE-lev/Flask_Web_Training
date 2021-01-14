@@ -15,12 +15,11 @@
     </tr>
     {%endfor%}
     </table>
-    
-    {% if username|length/artCnt>1 and username|length % artCnt>0 : %}
-    {% set pageCnt = username|length / artCnt+1 %}
+    {% if username|length<artCnt %}
+    {% set pageCnt = 1 %}
     {% else : %}
-    {% set pageCnt = username|length / artCnt%}
-    <h5>{{pageCnt}}</h5>
+    {% set pageCnt = (username|length / artCnt) %}
     {% endif %}
+    <h5>{{pageCnt}}</h5>
 </body>
 </html>
