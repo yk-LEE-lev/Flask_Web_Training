@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+<head><title>There's no SPOON</title></head>
+<body>
+    {% set callCritMax = page*artCnt %}
+    {% set callCritMin = (page-1)*artCnt %}
+    {% set listoView1 = username[callCritMin:callCritMax]%}
+    {% set listoView2 = usernick[callCritMin:callCritMax]%}
+    <h1>index main page1</h1>
+    <table border="2">
+    {% for i in range(listoView1|length) %}
+    <tr>
+        <td>{{i}}이 나왔습니다.{{listoView1[i]}}{{listoView2[i]}}님!</td>
+    </tr>
+    {%endfor%}
+    </table>
+    
+    {% if username|length/artCnt>1 and username|length % artCnt>0 : %}
+    {% set pageCnt = username|length / artCnt+1 %}
+    {% else : %}
+    {% set pageCnt = username|length / artCnt%}
+    <h5>{{pageCnt}}</h5>
+    {% endif %}
+</body>
+</html>
